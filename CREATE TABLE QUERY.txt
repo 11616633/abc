@@ -1,0 +1,160 @@
+USE [CashDeno]
+GO
+
+/****** Object:  Table [dbo].[CashOutReport]    Script Date: 1/31/2025 12:17:15 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CashOutReport](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Denomination] [nvarchar](50) NOT NULL,
+	[Crncy] [nvarchar](5) NOT NULL,
+	[D0_25] [float] NOT NULL,
+	[D0_50] [float] NOT NULL,
+	[D0_75] [float] NOT NULL,
+	[D1] [float] NOT NULL,
+	[D2] [float] NOT NULL,
+	[D5] [float] NOT NULL,
+	[D10] [float] NOT NULL,
+	[D20] [float] NOT NULL,
+	[D50] [float] NOT NULL,
+	[D100] [float] NOT NULL,
+	[D500] [float] NOT NULL,
+	[D1000] [float] NOT NULL,
+	[D5000] [float] NOT NULL,
+	[D10000] [float] NOT NULL,
+	[D25000] [float] NOT NULL,
+	[D50000] [float] NOT NULL,
+	[TotalDenominations] [float] NOT NULL,
+	[TotalAmount] [float] NOT NULL,
+	[OverallTotalAmount] [float] NOT NULL,
+	[Created_By] [nvarchar](150) NULL,
+	[Created_Date] [date] NULL,
+	[Added_DateTime] [datetime] NULL,
+	[Modified_By] [nvarchar](150) NULL,
+	[Modified_Date] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+---------------------------------------------------------------------------------
+
+USE [CashDeno]
+GO
+
+/****** Object:  Table [dbo].[CashTransferToTeller]    Script Date: 1/31/2025 12:17:53 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CashTransferToTeller](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Denomination] [nvarchar](50) NOT NULL,
+	[Crncy] [nvarchar](5) NOT NULL,
+	[D0_25] [float] NOT NULL,
+	[D0_50] [float] NOT NULL,
+	[D0_75] [float] NOT NULL,
+	[D1] [float] NOT NULL,
+	[D2] [float] NOT NULL,
+	[D5] [float] NOT NULL,
+	[D10] [float] NOT NULL,
+	[D20] [float] NOT NULL,
+	[D50] [float] NOT NULL,
+	[D100] [float] NOT NULL,
+	[D500] [float] NOT NULL,
+	[D1000] [float] NOT NULL,
+	[D5000] [float] NOT NULL,
+	[D10000] [float] NOT NULL,
+	[D25000] [float] NOT NULL,
+	[D50000] [float] NOT NULL,
+	[TotalDenominations] [float] NOT NULL,
+	[TotalAmount] [float] NOT NULL,
+	[OverallTotalAmount] [float] NOT NULL,
+	[Created_By] [nvarchar](150) NULL,
+	[Created_Date] [date] NULL,
+	[Added_DateTime] [datetime] NULL,
+	[Modified_By] [nvarchar](150) NULL,
+	[Modified_Date] [date] NULL,
+	[Assign_To] [nvarchar](150) NULL,
+	[Ack_Status] [nvarchar](1) NULL,
+	[Ack_By] [nvarchar](150) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+-----------------------------------------------------------------------------------
+
+USE [CashDeno]
+GO
+
+/****** Object:  Table [dbo].[ApplicationUser]    Script Date: 2/3/2025 3:54:33 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ApplicationUser](
+	[Id] [uniqueidentifier] NOT NULL,
+	[FullName] [nvarchar](500) NOT NULL,
+	[StaffId] [nvarchar](20) NOT NULL,
+	[UserBaseType] [int] NOT NULL,
+	[DeptId] [nvarchar](10) NULL,
+	[DeptName] [nvarchar](200) NULL,
+	[BranchName] [nvarchar](100) NULL,
+	[Designation] [nvarchar](100) NULL,
+	[Branch] [nvarchar](10) NOT NULL,
+	[currentFiscalYear] [nvarchar](50) NULL,
+	[JobID] [nvarchar](10) NULL,
+	[FunctionalTitle] [nvarchar](100) NULL,
+	[CreatedBy] [nvarchar](300) NULL,
+	[CreatedById] [uniqueidentifier] NOT NULL,
+	[CreatedByStaffNo] [nvarchar](20) NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[ModifiedBy] [nvarchar](300) NULL,
+	[ModifiedById] [uniqueidentifier] NOT NULL,
+	[ModifiedByStaffNo] [nvarchar](20) NULL,
+	[ModifiedDate] [datetime] NOT NULL,
+	[AuthorisedBy] [nvarchar](300) NULL,
+	[AuthorisedById] [uniqueidentifier] NULL,
+	[AuthorisedByStaffNo] [nvarchar](20) NULL,
+	[AuthorisedDate] [datetime] NULL,
+	[Record_Status] [int] NOT NULL,
+	[EntityState] [int] NOT NULL,
+	[DataEntry] [int] NOT NULL,
+	[RowVersion] [timestamp] NOT NULL,
+	[ChangeLog] [xml] NULL,
+	[Email] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEndDateUtc] [datetime] NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+	[UserName] [nvarchar](256) NOT NULL,
+ CONSTRAINT [PK_Administrator.ApplicationUser] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+
+
+
